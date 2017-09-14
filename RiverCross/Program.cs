@@ -10,7 +10,11 @@ namespace RiverCross
     {
         static void Main(string[] args)
         {
-            HashSet<string> leftBank = new HashSet<string>() { "H", "F", "G", "W" };
+            // M - farmer(man)
+            // F - fox
+            // G - goose
+            // B - beans
+            HashSet<string> leftBank = new HashSet<string>() { "M", "F", "G", "B" };
             HashSet<string> rightBank = new HashSet<string>();
             Solution s = new Solution();
             s.backTrack.Add(s.Format(leftBank, rightBank));

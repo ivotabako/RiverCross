@@ -15,13 +15,13 @@ namespace RiverCross
 
         public void FindPath(HashSet<string> leftBank, HashSet<string> rightBank)
         {
-            if (rightBank.Contains("H") && rightBank.Contains("F") && rightBank.Contains("G") && rightBank.Contains("W"))
+            if (rightBank.Contains("M") && rightBank.Contains("F") && rightBank.Contains("G") && rightBank.Contains("B"))
             {
-                Console.WriteLine("win");
+                Console.WriteLine("Solution :");
 
                 foreach (var item in successfulTrack)
                 {
-                    Console.WriteLine(item);
+                    Console.WriteLine(item.Replace("B", "Beans").Replace("F", "Fox").Replace("G", "Goose").Replace("M", "Farmer").Replace("Left", "Left Bank").Replace("Right", "Right Bank"));
                 }
 
                 Environment.Exit(0);
@@ -32,13 +32,13 @@ namespace RiverCross
             {
                 CrossTheRiver(leftBank, rightBank, i);
 
-                if (rightBank.Contains("H") && rightBank.Contains("F") && rightBank.Contains("G") && rightBank.Contains("W"))
+                if (rightBank.Contains("M") && rightBank.Contains("F") && rightBank.Contains("G") && rightBank.Contains("B"))
                 {
                     return;
                 }
             }
 
-            if (rightBank.Contains("H") && rightBank.Contains("F") && rightBank.Contains("G") && rightBank.Contains("W"))
+            if (rightBank.Contains("M") && rightBank.Contains("F") && rightBank.Contains("G") && rightBank.Contains("B"))
             {
                 return;
             }
@@ -56,28 +56,28 @@ namespace RiverCross
             switch (crossType)
             {
                 case 1 :
-                    SailLeftToRight(leftBank, rightBank, "H", "F");                      
+                    SailLeftToRight(leftBank, rightBank, "M", "F");                      
                     break;
                 case 2:
-                    SailLeftToRight(leftBank, rightBank, "H", "G");
+                    SailLeftToRight(leftBank, rightBank, "M", "G");
                     break;
                 case 3:
-                    SailLeftToRight(leftBank, rightBank, "H", "W");
+                    SailLeftToRight(leftBank, rightBank, "M", "B");
                     break;
                 case 4:
-                    SailLeftToRight(leftBank, rightBank, "H", "");
+                    SailLeftToRight(leftBank, rightBank, "M", "");
                     break;
                 case 5:
-                    SailRightToLeft(leftBank, rightBank, "H", "F");
+                    SailRightToLeft(leftBank, rightBank, "M", "F");
                     break;
                 case 6:
-                    SailRightToLeft(leftBank, rightBank, "H", "G");
+                    SailRightToLeft(leftBank, rightBank, "M", "G");
                     break;
                 case 7:
-                    SailRightToLeft(leftBank, rightBank, "H", "W");
+                    SailRightToLeft(leftBank, rightBank, "M", "B");
                     break;
                 case 8:
-                    SailRightToLeft(leftBank, rightBank, "H", "");
+                    SailRightToLeft(leftBank, rightBank, "M", "");
                     break;
                 default:
                     break;
@@ -196,13 +196,13 @@ namespace RiverCross
 
         private bool IsNotValid(HashSet<string> leftBank, HashSet<string> rightBank)
         {
-            if (leftBank.Contains("H") && rightBank.Contains("F") && rightBank.Contains("G"))
+            if (leftBank.Contains("M") && rightBank.Contains("F") && rightBank.Contains("G"))
                 return true;
-            if (leftBank.Contains("H") && rightBank.Contains("W") && rightBank.Contains("G"))
+            if (leftBank.Contains("M") && rightBank.Contains("B") && rightBank.Contains("G"))
                 return true;
-            if (rightBank.Contains("H") && leftBank.Contains("F") && leftBank.Contains("G"))
+            if (rightBank.Contains("M") && leftBank.Contains("F") && leftBank.Contains("G"))
                 return true;
-            if (rightBank.Contains("H") && leftBank.Contains("W") && leftBank.Contains("G"))
+            if (rightBank.Contains("M") && leftBank.Contains("B") && leftBank.Contains("G"))
                 return true;
             if (IsInBackTrackList(leftBank, rightBank))
                 return true;
